@@ -14,12 +14,14 @@ ActiveRecord::Schema.define(version: 20170722102108) do
 
   create_table "images", force: :cascade do |t|
     t.string "title", default: "Image", null: false
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture_file_name"
     t.string "picture_content_type"
     t.integer "picture_file_size"
     t.datetime "picture_updated_at"
+    t.index ["user_id"], name: "index_images_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
