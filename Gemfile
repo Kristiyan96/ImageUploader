@@ -32,8 +32,12 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
 #Authentication gem
 gem 'devise'
+
+#Image management
+gem "paperclip", "~> 5.0.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

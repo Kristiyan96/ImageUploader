@@ -12,8 +12,13 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
+rake db:create
 
 * Database initialization
+rake db:migrate
+
+* Run application
+rails s
 
 * How to run the test suite
 
@@ -21,5 +26,8 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
 # ImageUploader
+To use paperclip you have to install ImageMagick and if you run the application in development you should follow the instructions here: https://github.com/thoughtbot/paperclip
+In config/environments/development.rb change 
+Paperclip.options[:command_path] = "/usr/bin/"
+to your path
