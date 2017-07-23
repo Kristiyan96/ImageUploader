@@ -1,8 +1,11 @@
 p#notice
   = notice
 h1
-  | Gallery
-- @images.each do |img|
-  = image_tag img.picture.url(:medium)
+  b Gallery
+  .pull-right = link_to 'New Image', new_image_path if current_user
+.masonry-gallery
+	- @images.each do |img|
+		= link_to image_path(img) do
+		  = image_tag img.picture.url(:medium)
 br
-= link_to 'New Image', new_image_path if current_user
+

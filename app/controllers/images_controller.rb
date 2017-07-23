@@ -11,6 +11,8 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
+    @comments = @image.comments
+    @comment = @image.comments.build
   end
 
   # GET /images/new

@@ -1,4 +1,17 @@
 p#notice
   = notice
-= link_to 'Edit', edit_image_path(@image)
+= image_tag @image.picture, class: 'full-width'
+.actions.pull-right
+	= link_to 'Delete image', @image, data: { confirm: 'Are you sure?' }, method: :delete if @image.user == current_user
+.add-comment
+	= render 'comments/form' if current_user
+
+.comments
+	- @comments.each do |comment|
+		hr
+		= comment.user.try(:email)
+		= link_to 'Delete', image_comment_path(comment) , data: { confirm: 'Are you sure?' }, method: :delete, class: 'pull-right' if current_user && comment.user == current_user
+		br
+		b = comment.message	
+
 = link_to 'Back', images_path
