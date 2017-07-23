@@ -35,16 +35,15 @@ gem 'jbuilder', '~> 2.5'
 
 #Authentication gem
 gem 'devise'
-
 #Image management
 gem "paperclip", "~> 5.0.0"
-
 #Better visualisation
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.0'
-
 #Easier forms
 gem 'simple_form'
+#Slim for easier code writing
+gem 'slim'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

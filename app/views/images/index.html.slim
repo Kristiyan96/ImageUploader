@@ -1,0 +1,8 @@
+p#notice
+  = notice
+h1
+  | Gallery
+- @images.each do |img|
+  = image_tag img.picture.url(:medium)
+br
+= link_to 'New Image', new_image_path if current_user
