@@ -1,0 +1,8 @@
+- if flash[:notice]
+	.alert.alert-info.alert-dismissable
+		a.close aria-label="close" data-dismiss="alert" href="#"  X
+		= flash[:notice]
+- if flash[:alert]
+	.alert.alert-danger.alert-dismissable
+		a.close aria-label="close" data-dismiss="alert" href="#"  X
+		= flash[:alert]

@@ -108,3 +108,15 @@ img.full-width{
 .margin-right{
 	margin-right: 20px;
 }
+.comments{
+	margin-bottom: 50px;
+}
+.reply-form{
+	display: none;
+}
+.alert{
+	position: absolute;
+	width: 50%;
+	margin: 50px 25%;
+	z-index: 100;
+}

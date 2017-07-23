@@ -1,17 +1,28 @@
-p#notice
-  = notice
 = image_tag @image.picture, class: 'full-width'
 .actions.pull-right
 	= link_to 'Delete image', @image, data: { confirm: 'Are you sure?' }, method: :delete if @image.user == current_user
 .add-comment
-	= render 'comments/form' if current_user
+	= render 'comments/form', comment: @image.comments.build, type: 'comment' if current_user
 
 .comments
-	- @comments.each do |comment|
+	- @comments.select{|c| c.message.present?}.each do |comment|
 		hr
 		= comment.user.try(:email)
-		= link_to 'Delete', image_comment_path(comment) , data: { confirm: 'Are you sure?' }, method: :delete, class: 'pull-right' if current_user && comment.user == current_user
+		.pull-right
+			= link_to 'Delete', image_comment_path(@image, comment) , data: { confirm: 'Are you sure?' }, method: :delete if current_user && comment.user == current_user
+			- if current_user
+				a.reply Reply
 		br
 		b = comment.message	
+		br
+		.reply-form
+			= render 'comments/form', comment: comment.replies.build, type: 'reply' if current_user
+		.col-xs-11.col-xs-offset-1.replies
+			- comment.replies.each do |reply|
+				br
+				= reply.user.try(:email)
+				br
+				b = reply.message	
+				br
 
 = link_to 'Back', images_path

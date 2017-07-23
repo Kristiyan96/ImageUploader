@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	before_action :authenticate_user!
 
   def create
   	@image = Image.find(params[:image_id])
@@ -17,7 +18,13 @@ class CommentsController < ApplicationController
   end
 
 	def destroy
-
+    @comment = Comment.find(params[:id])
+    @image = @comment.image
+    @comment.destroy if @comment.user == current_user
+    respond_to do |format|
+      format.html { redirect_to @image, notice: 'Comment was successfully destroyed.' }
+      format.json { head :no_content }
+    end
 	end
 
 	private

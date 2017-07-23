@@ -1,4 +1,5 @@
-= simple_form_for [@image, @comment] do |f|
-  = f.input :message, label: 'Add a comment'
-  .actions
-    = f.button :submit
+= simple_form_for [@image, comment] do |f|
+	= f.hidden_field :parent_id, input_html: {value: comment.parent_id}
+	= f.input :message, label: "Add a #{type}"
+	.actions
+		= f.button :submit, "#{type}"
